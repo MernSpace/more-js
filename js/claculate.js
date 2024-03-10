@@ -48,18 +48,61 @@ function onRectangleBtnClick(){
 
 
 document.getElementById('parallelogram-btn').addEventListener('click',function(){
-    let parallelogramHeight = document.getElementById('parallelogram-height');
-    let parallelogramHeightString = parallelogramHeight.innerText;
-    let parallelogramHeightNumber = parseInt(parallelogramHeightString);
-    console.log(parallelogramHeightNumber);
-    console.log(typeof parallelogramHeightNumber)
+        let parallelogramBase = getInputValue('parallelogram-b-input');
+        let parallelogramHeight = getInputValue('parallelogram-h-input');
 
-
-    let parallelogramBase = document.getElementById('parallelogram-base');
-    let parallelogramBaseString = parallelogramBase.innerText;
-    let parallelogramBaseNumber = parseInt(parallelogramBaseString);
-
-    let ParallelogramArea = parallelogramHeightNumber * parallelogramBaseNumber;
-    let displayParallelogram = document.getElementById('display-Parallelogram');
-    displayParallelogram.innerText = ParallelogramArea;
+        let area = parallelogramBase * parallelogramHeight;
+        setInnerText('display-Parallelogram',area)
 })
+
+
+// Rhombus btn click function
+
+function onRhombusBtnClick(){
+    let d1 = getInputValue('rhombus-d1')
+    let d2 = getInputValue('rhombus-d2')
+
+    let area = 0.5 * d1 * d2
+    setInnerText('display-rhombus',area)
+}
+
+
+// pentagon btn click function
+
+function onPentagonBtnClick(){
+    const b = getInputValue('pentagon-b');
+    const p = getInputValue('pentagon-p');
+    let area = 0.5 * b * p
+     setInnerText('display-pentagon',area);
+}
+
+// ellipse btn click function
+ 
+function onEllipseBtnClick(){
+    const a = getInputValue('ellipse-a');
+    const b = getInputValue('ellipse-b');
+
+    const area = 3.14 * a * b;
+    setInnerText('display-ellipse',area)
+}
+
+
+
+
+
+
+
+
+//reuseable function 
+
+function getInputValue(inputID){
+    let inputField = document.getElementById(inputID);
+    let inputValue = inputField.value;
+    let inputNumber = parseFloat(inputValue);
+    return inputNumber
+}
+
+function setInnerText (displayID,Area){
+    let innerTextField = document.getElementById(displayID);
+    innerTextField.innerText = Area;
+}
